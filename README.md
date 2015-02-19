@@ -1,4 +1,4 @@
-gerrit-notify-patch: Gerrit Notify Patch plugin
+gerrit-notify-patchset: Gerrit Notify PatchSet plugin
 ==================
 
 * Author: rinrinne a.k.a. rin_ne
