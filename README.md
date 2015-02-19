@@ -49,6 +49,11 @@ Reference
 History
 ---------------------
 
+* 1.1
+  * Fix a couple of package metadata
+  * Get CurrentUser from Provider
+  * Some fixes to support Gerrit 2.10
+
 * 1.0
   *  First release
 
