@@ -1,0 +1,48 @@
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.3'
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+group = 'com.googlesource.gerrit.plugins.notifypatch'
+version = "1.0-SNAPSHOT"
+
+jar {
+  classifier = apiVersion
+  manifest {
+    attributes(
+      'Gerrit-PluginName': project.name, 
+      'Gerrit-ApiType': apiType,
+      'Gerrit-ApiVersion': apiVersion,
+      'Gerrit-Module': 'com.googlesource.gerrit.plugins.notifypatch.Module',
+      'Implementation-Vendor': 'rinrinne',
+      'Implementation-URL': 'https://github.com/rinrinne/gerrit-change-trigger',
+      'Implementation-Title': "${apiType} ${project.name}",
+      'Implementation-Version' : version,
+      'Created-By': 'rinrinne (rinrin.ne@gmail.com)'
+    )
+  } 
+}
+
+repositories {
+  mavenCentral()
+  maven {
+    name = "Gerrit API repository"
+    url = "https://gerrit-api.storage.googleapis.com/"
+    artifactUrls = [
+      "https://gerrit-api.storage.googleapis.com/release/",
+      "https://gerrit-api.storage.googleapis.com/snapshot/",
+    ]
+  }
+}
+
+dependencies {
+  compile(
+    [group: 'com.google.gerrit', name: "gerrit-${apiType}-api", version: apiVersion],
+  )
+}

@@ -1,0 +1,11 @@
+*.iml
+hs_err_pid*
+/work/
+/build/
+/bin/
+/.gradle/
+/.classpath
+/.checkstyle
+/.project
+/.settings
+/.idea
