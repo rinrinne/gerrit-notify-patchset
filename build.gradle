@@ -20,6 +20,7 @@ jar {
       'Gerrit-ApiType': apiType,
       'Gerrit-ApiVersion': apiVersion,
       'Gerrit-Module': 'com.googlesource.gerrit.plugins.notifypatchset.Module',
+      'Gerrit-HttpModule': 'com.googlesource.gerrit.plugins.notifypatchset.HttpModule',
       'Implementation-Vendor': 'rinrinne',
       'Implementation-URL': 'https://github.com/rinrinne/gerrit-change-trigger',
       'Implementation-Title': "${apiType} ${project.name}",
