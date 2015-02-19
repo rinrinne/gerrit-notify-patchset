@@ -21,6 +21,7 @@ import com.google.gerrit.extensions.restapi.ResourceConflictException;
 import com.google.gerrit.extensions.restapi.RestReadView;
 import com.google.gerrit.extensions.webui.UiAction;
 import com.google.gerrit.reviewdb.server.ReviewDb;
+import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.IdentifiedUser;
 import com.google.gerrit.server.change.RevisionResource;
 import com.google.gerrit.server.data.AccountAttribute;
@@ -28,15 +29,21 @@ import com.google.gerrit.server.data.ChangeAttribute;
 import com.google.gerrit.server.data.PatchSetAttribute;
 import com.google.gerrit.server.events.EventFactory;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 public class NotifyPatchSetAction implements UiAction<RevisionResource>, RestReadView<RevisionResource> {
-
+  private final Provider<CurrentUser> user;
   private final ChangeHooks changeHooks;
   private final EventFactory eventFactory;
   private final ReviewDb reviewDb;
 
   @Inject
-  public NotifyPatchSetAction(ChangeHooks changeHooks, EventFactory eventFactory, ReviewDb reviewDb) {
+  public NotifyPatchSetAction(
+      Provider<CurrentUser> user,
+      ChangeHooks changeHooks,
+      EventFactory eventFactory,
+      ReviewDb reviewDb) {
+    this.user = user;
     this.changeHooks = changeHooks;
     this.eventFactory = eventFactory;
     this.reviewDb = reviewDb;
@@ -49,7 +56,7 @@ public class NotifyPatchSetAction implements UiAction<RevisionResource>, RestRea
 
     ChangeAttribute change = eventFactory.asChangeAttribute(rrsc.getChange());
     PatchSetAttribute patchSet = eventFactory.asPatchSetAttribute(rrsc.getPatchSet());
-    AccountAttribute notifier = eventFactory.asAccountAttribute(((IdentifiedUser)rrsc.getControl().getCurrentUser()).getAccountId());
+    AccountAttribute notifier = eventFactory.asAccountAttribute(((IdentifiedUser)user.get()).getAccountId());
 
     event.change = change;
     event.patchSet = patchSet;
@@ -64,7 +71,8 @@ public class NotifyPatchSetAction implements UiAction<RevisionResource>, RestRea
   public com.google.gerrit.extensions.webui.UiAction.Description getDescription(RevisionResource rrsc) {
     return new Description()
     .setLabel("Notify")
-    .setTitle("Notify patchset-notified event to event stream.");
+    .setTitle("Notify patchset-notified event to event stream.")
+    .setVisible(user.get() instanceof IdentifiedUser);
   }
 
 }
