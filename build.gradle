@@ -9,7 +9,7 @@ apply plugin: 'idea'
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
-group = 'com.googlesource.gerrit.plugins.notifypatch'
+group = 'com.googlesource.gerrit.plugins.notifypatchset'
 version = "1.0-SNAPSHOT"
 
 jar {
@@ -19,7 +19,7 @@ jar {
       'Gerrit-PluginName': project.name, 
       'Gerrit-ApiType': apiType,
       'Gerrit-ApiVersion': apiVersion,
-      'Gerrit-Module': 'com.googlesource.gerrit.plugins.notifypatch.Module',
+      'Gerrit-Module': 'com.googlesource.gerrit.plugins.notifypatchset.Module',
       'Implementation-Vendor': 'rinrinne',
       'Implementation-URL': 'https://github.com/rinrinne/gerrit-change-trigger',
       'Implementation-Title': "${apiType} ${project.name}",

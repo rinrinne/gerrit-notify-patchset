@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.googlesource.gerrit.plugins.notifypatch;
+package com.googlesource.gerrit.plugins.notifypatchset;
 
 import com.google.gerrit.common.ChangeHooks;
 import com.google.gerrit.extensions.restapi.AuthException;
@@ -29,14 +29,14 @@ import com.google.gerrit.server.data.PatchSetAttribute;
 import com.google.gerrit.server.events.EventFactory;
 import com.google.inject.Inject;
 
-public class NotifyPatchAction implements UiAction<RevisionResource>, RestReadView<RevisionResource> {
+public class NotifyPatchSetAction implements UiAction<RevisionResource>, RestReadView<RevisionResource> {
 
   private final ChangeHooks changeHooks;
   private final EventFactory eventFactory;
   private final ReviewDb reviewDb;
 
   @Inject
-  public NotifyPatchAction(ChangeHooks changeHooks, EventFactory eventFactory, ReviewDb reviewDb) {
+  public NotifyPatchSetAction(ChangeHooks changeHooks, EventFactory eventFactory, ReviewDb reviewDb) {
     this.changeHooks = changeHooks;
     this.eventFactory = eventFactory;
     this.reviewDb = reviewDb;

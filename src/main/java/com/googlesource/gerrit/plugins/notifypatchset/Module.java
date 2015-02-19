@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.googlesource.gerrit.plugins.notifypatch;
+package com.googlesource.gerrit.plugins.notifypatchset;
 
 import static com.google.gerrit.server.change.RevisionResource.REVISION_KIND;
 import com.google.gerrit.extensions.restapi.RestApiModule;
@@ -24,7 +24,7 @@ class Module extends AbstractModule {
     install(new RestApiModule() {
       @Override
       protected void configure() {
-        get(REVISION_KIND, "notify-revision").to(NotifyPatchAction.class);
+        get(REVISION_KIND, "notify-revision").to(NotifyPatchSetAction.class);
       }
     });
   }
