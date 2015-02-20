@@ -2,7 +2,7 @@ gerrit-notify-patchset: Gerrit Notify PatchSet plugin
 ==================
 
 * Author: rinrinne a.k.a. rin_ne
-* Repository: http://github.com/rinrinne/gerrit-notify-patch
+* Repository: http://github.com/rinrinne/gerrit-notify-patchset
 * Release: http://github.com/rinrinne/gerrit-notify-patchset/releases
 
 [![Build Status](https://travis-ci.org/rinrinne/gerrit-notify-patchset.png?branch=master)](https://travis-ci.org/rinrinne/gerrit-notify-patchset)
@@ -12,8 +12,9 @@ Synopsis
 
 This is a Gerrit plugin.
 
-This can publish `patchset-notified` event for the latest patchset in a change to gerrit event stream.
 `Notify` button is added to revision view.
+
+If push, `patchset-notified` event for the latest patchset in a change is published to gerrit event stream.
 
 This plugin works on Gerrit 2.8 or later.
 
@@ -34,7 +35,7 @@ To build plugin with maven.
 Using another version API
 --------------------------
 
-Now avaliable for Gerrit 2.9 by default. If you want to use it on another version of Gerrit, please try the below.
+Now avaliable for Gerrit 2.10 by default. If you want to use it on another version of Gerrit, please try the below.
 
     ./gradlew build -PapiVersion=2.8
 

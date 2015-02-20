@@ -71,7 +71,7 @@ public class NotifyPatchSetAction implements UiAction<RevisionResource>, RestRea
   public com.google.gerrit.extensions.webui.UiAction.Description getDescription(RevisionResource rrsc) {
     return new Description()
     .setLabel("Notify")
-    .setTitle("Notify patchset-notified event to event stream.")
+    .setTitle("Notify this patchset.")
     .setVisible(user.get() instanceof IdentifiedUser);
   }
 

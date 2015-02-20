@@ -23,7 +23,7 @@ Gerrit.install(function(self) {
     var n = c.button('No', {onclick: function(){
       c.hide();
     }});
-    c.popup(c.div(c.msg('Notify patchset-notified event?'),
+    c.popup(c.div(c.msg('Are you sure?'),
         c.br(),
         y, n));
     n.focus();
